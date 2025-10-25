@@ -1,4 +1,4 @@
-﻿services:
+services:
   # Backend API Service
   - type: web
     name: jitsjournal-backend
@@ -6,80 +6,49 @@
     region: oregon
     plan: starter
     branch: main
-    rootDir: JitsPlannerPro
-    buildCommand: git submodule update --init --recursive && npm install && npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
-      # Node Environment
       - key: NODE_ENV
         value: production
-      
-      # Database (Neon PostgreSQL)
       - key: DATABASE_URL
-        sync: false  # Set this in Render dashboard
-      
-      # JWT Authentication
+        sync: false
       - key: JWT_SECRET
-        generateValue: true  # Auto-generate secure secret
-      
-      # Supabase Configuration
+        generateValue: true
       - key: VITE_SUPABASE_URL
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: SUPABASE_JWT_SECRET
-        sync: false  # Set this in Render dashboard
-      
-      # Email Configuration (Gmail SMTP)
+        sync: false
       - key: GMAIL_USER
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: GMAIL_APP_PASSWORD
-        sync: false  # Set this in Render dashboard
-      
-      # Cloudflare R2 Storage
+        sync: false
       - key: R2_ENDPOINT
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: R2_ACCESS_KEY_ID
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: R2_SECRET_ACCESS_KEY
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: R2_BUCKET_NAME
         value: jitsjournal-videos
-      
-      # Stripe Payment Configuration
       - key: STRIPE_SECRET_KEY
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: STRIPE_ENTHUSIAST_PRICE_ID
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: VITE_STRIPE_ENTHUSIAST_PRICE_ID
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: STRIPE_GYM_PRO_PRICE_ID
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: VITE_STRIPE_GYM_PRO_PRICE_ID
-        sync: false  # Set this in Render dashboard
-      
+        sync: false
       - key: STRIPE_WEBHOOK_SECRET
-        sync: false  # Set this in Render dashboard
-      
-      # OpenAI API
+        sync: false
       - key: OPENAI_API_KEY
-        sync: false  # Set this in Render dashboard
-      
-      # App URL (will be auto-set by Render)
+        sync: false
       - key: VITE_APP_URL
-        value: https://jitsjournal.onrender.com  # Update with your actual domain
-      
-      # Port (Render automatically sets this)
+        value: https://jitsjournal.onrender.com
       - key: PORT
         value: 10000
